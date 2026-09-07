@@ -2,7 +2,7 @@
 Name: Mason Nguyen
 Role: Geospatial Analyst & GIS Consultant
 Contact: masonnguyengeo [at] gmail.com
-Website: https://masonnguyengeo.com
+Website: https://www.masonnguyengeo.com
 Location: NA Servers, US-WEST
 
 /* GEO INFRASTRUCTURE */

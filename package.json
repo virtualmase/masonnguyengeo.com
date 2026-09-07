@@ -26,7 +26,10 @@
     "validate:how-to-become-source": "node scripts/validate-how-to-become-source.mjs",
     "validate:geo-stack": "node scripts/validate-geo-stack.mjs",
     "validate:applied-systems": "node scripts/validate-applied-systems.mjs",
-    "validate:aeo-vs-geo": "node scripts/validate-aeo-vs-geo.mjs"
+    "validate:aeo-vs-geo": "node scripts/validate-aeo-vs-geo.mjs",
+    "build:sitemap": "node scripts/generate-sitemap.mjs",
+    "validate:site": "node scripts/validate-site.mjs",
+    "release:check": "npm run build:sitemap && npm run validate:author && npm run validate:site"
   },
   "dependencies": {
     "compression": "^1.7.4",

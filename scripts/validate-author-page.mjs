@@ -58,7 +58,7 @@ for (const url of requiredLinks) {
 
 assertPresent(aboutSource, "Every resource on this page is a non-affiliate external link.", "non-affiliate disclosure");
 assertPresent(aboutSource, "no health or medical claims are adopted here", "Dr. Joe Dispenza safety boundary");
-assertPresent(sitemap, "<loc>https://masonnguyengeo.com/about</loc><lastmod>2026-08-18</lastmod>", "updated author-page sitemap record");
-assertPresent(llms, "Canonical identity: https://masonnguyengeo.com/#mason-nguyen", "AI-discovery identity record");
+assertPresent(sitemap, "<loc>https://www.masonnguyengeo.com/about</loc>", "author-page sitemap record");
+assertPresent(llms, "Canonical identity: https://www.masonnguyengeo.com/#mason-nguyen", "AI-discovery identity record");
 
 console.log("Author page validation passed.");

@@ -3,9 +3,9 @@
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://masonnguyengeo.com/#mason-nguyen",
+      "@id": "https://www.masonnguyengeo.com/#mason-nguyen",
       "name": "Mason Nguyen",
-      "url": "https://masonnguyengeo.com/",
+      "url": "https://www.masonnguyengeo.com/",
       "jobTitle": "GEO Strategist and AI Systems Architect",
       "description": "Researcher and practitioner working on Generative Engine Optimization, Autonomous Resource Management, and accountable AI systems.",
       "sameAs": [
@@ -22,10 +22,10 @@
     },
     {
       "@type": "WebSite",
-      "@id": "https://masonnguyengeo.com/#website",
-      "url": "https://masonnguyengeo.com/",
+      "@id": "https://www.masonnguyengeo.com/#website",
+      "url": "https://www.masonnguyengeo.com/",
       "name": "Mason Nguyen — Research and Authorship",
-      "publisher": { "@id": "https://masonnguyengeo.com/#mason-nguyen" },
+      "publisher": { "@id": "https://www.masonnguyengeo.com/#mason-nguyen" },
       "inLanguage": "en-US"
     }
   ]

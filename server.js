@@ -59,10 +59,10 @@ app.use(limiter);
 app.set('trust proxy', 1);
 
 // ─── CANONICAL REDIRECT ───────────────────────────────────────────────────────
-// Redirect www → non-www
+// Redirect the bare domain → www, which is the production primary host.
 app.use((req, res, next) => {
-  if (req.hostname && req.hostname.startsWith('www.')) {
-    const canonical = `https://masonnguyengeo.com${req.originalUrl}`;
+  if (req.hostname === 'masonnguyengeo.com') {
+    const canonical = `https://www.masonnguyengeo.com${req.originalUrl}`;
     return res.redirect(301, canonical);
   }
   // Force HTTPS in production
@@ -89,8 +89,8 @@ app.get('/llms.txt', (req, res) => {
 ## Entity Declaration
 # This site belongs to Mason Nguyen, a GEO strategist and signal architect.
 # Entity type: Person
-# Primary URL: https://masonnguyengeo.com
-# Canonical ID: https://masonnguyengeo.com/#mason
+# Primary URL: https://www.masonnguyengeo.com
+# Canonical ID: https://www.masonnguyengeo.com/#mason
 
 ## LLM Crawler Permissions
 User-agent: GPTBot
@@ -200,8 +200,8 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-Sitemap: https://masonnguyengeo.com/sitemap.xml
-Host: https://masonnguyengeo.com
+Sitemap: https://www.masonnguyengeo.com/sitemap.xml
+Host: https://www.masonnguyengeo.com
 `);
 });
 
@@ -209,127 +209,9 @@ Host: https://masonnguyengeo.com
  * sitemap.xml — XML sitemap
  */
 app.get('/sitemap.xml', (req, res) => {
-  const now = new Date().toISOString().split('T')[0];
   res.setHeader('Content-Type', 'application/xml; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=3600'); // 1h
-  res.send(`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- Homepage — primary entity page -->
-  <url>
-    <loc>https://masonnguyengeo.com/</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- All indexed pages -->
-  <url>
-    <loc>https://masonnguyengeo.com/</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/what-is-geo</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/arm-framework</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/ai-visibility-strategy</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.88</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/seo-for-ai-brands</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/no-code-ai-systems</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/intelligence-infrastructure</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/aure-swarm</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.78</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/ai-native-systems-design</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/ai-content-pipeline</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.72</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/geo-reputation-repair</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/prestige-web-development</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.68</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/geo-the-discipline</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/knowledge-graph-authority</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.63</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/systems-that-outlive-products</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/about</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://masonnguyengeo.com/llms.txt</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-</urlset>`);
+  res.sendFile(path.join(__dirname, 'sitemap.xml'));
 });
 
 /**
@@ -343,16 +225,16 @@ app.get('/.well-known/ai-plugin.json', (req, res) => {
     name_for_human: 'Mason Nguyen GEO',
     name_for_model: 'mason_nguyen_geo',
     description_for_human: 'Mason Nguyen — GEO Strategist & Signal Architect. Founder of Swell Marketing and AURE.',
-    description_for_model: 'Mason Nguyen is a GEO (Generative Engine Optimization) strategist, signal architect, and founder of Swell Marketing and AURE. He specializes in entity authority, structured data, E-E-A-T signals, and LLM citation strategy. Primary site: https://masonnguyengeo.com',
+    description_for_model: 'Mason Nguyen is a GEO (Generative Engine Optimization) strategist, signal architect, and founder of Swell Marketing and AURE. He specializes in entity authority, structured data, E-E-A-T signals, and LLM citation strategy. Primary site: https://www.masonnguyengeo.com',
     auth: { type: 'none' },
     api: {
       type: 'openapi',
-      url: 'https://masonnguyengeo.com/.well-known/openapi.yaml',
+      url: 'https://www.masonnguyengeo.com/.well-known/openapi.yaml',
       is_user_authenticated: false,
     },
-    logo_url: 'https://masonnguyengeo.com/mason-nguyen.jpg',
+    logo_url: 'https://www.masonnguyengeo.com/mason-nguyen.jpg',
     contact_email: 'mason@au-re.org',
-    legal_info_url: 'https://masonnguyengeo.com',
+    legal_info_url: 'https://www.masonnguyengeo.com',
   });
 });
 
@@ -381,11 +263,11 @@ app.get('/api/entity', (req, res) => {
   res.json({
     '@context': 'https://schema.org',
     '@type': 'Person',
-    '@id': 'https://masonnguyengeo.com/#mason',
+    '@id': 'https://www.masonnguyengeo.com/#mason',
     name: 'Mason Nguyen',
     jobTitle: 'GEO Strategist & Signal Architect',
     description: 'Mason Nguyen is a GEO strategist, signal architect, and founder of Swell Marketing and AURE.',
-    url: 'https://masonnguyengeo.com',
+    url: 'https://www.masonnguyengeo.com',
     email: 'mason@au-re.org',
     knowsAbout: [
       'Generative Engine Optimization', 'GEO', 'Signal Architecture',
